@@ -14,7 +14,8 @@ public class iPad extends Device{
 
     public static iPad addDevice(Scanner scanner) {
         System.out.print("Please enter model name: ");
-        String modelName = scanner.next();
+        scanner.nextLine();
+        String modelName = scanner.nextLine();
 
         System.out.print(("Please enter screen size: "));
         Double screenSize = scanner.nextDouble();
@@ -41,7 +42,7 @@ public class iPad extends Device{
         return new iPad(modelName, screenSize, processor, presenceOf4G, color, memory, price);
     }
 
-    public static Device readDevice(String[] lineSplit) {
+    public static iPad readDevice(String[] lineSplit) {
         String modelName = lineSplit[0].replace("IPAD ", "");
         Double screenSize = Double.parseDouble(lineSplit[1]);
         String processor = lineSplit[2];
@@ -55,14 +56,14 @@ public class iPad extends Device{
 
     public String toString() {
         return "Apple iPad " + modelName + " with " + memory + "GB of memory\n" +
-                "with an " + processor + " and " + screenSize.setScale(2, RoundingMode.CEILING) + " inch screen\n" +
+                "with an " + processor + " processor and " + screenSize.setScale(1, RoundingMode.CEILING) + " inch screen\n" +
                 "having WiFi " + ((presenceOf4G) ? "and" : "without") + " 4G technology\n" +
-                price + " euros\n";
+                (int) (price) + " euros\n";
     }
 
     public String toStringText() {
         return "IPAD " + modelName + ", " +
-                screenSize.setScale(2, RoundingMode.CEILING).stripTrailingZeros() + ", " +
+                screenSize.setScale(1, RoundingMode.CEILING).stripTrailingZeros() + ", " +
                 processor + ", " +
                 ((presenceOf4G) ? "TRUE" : "FALSE") + ", " +
                 color + ", " +

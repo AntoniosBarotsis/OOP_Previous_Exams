@@ -2,7 +2,6 @@ package com.company;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
-import java.util.Scanner;
 
 public abstract class Device {
     protected String modelName;
@@ -19,14 +18,6 @@ public abstract class Device {
         this.color = color;
         this.memory = memory;
         this.price = price;
-    }
-
-    public static Device addDevice(Scanner scanner) {
-        return null;
-    };
-
-    public static Device readDevice(Scanner scanner) throws IllegalArgumentException{
-        return null;
     }
 
     public abstract String toString();

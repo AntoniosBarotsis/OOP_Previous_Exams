@@ -36,7 +36,7 @@ public class Main {
 
             switch (input) {
                 case 1:
-                    System.out.println(deviceList.toString(false));
+                    System.out.println(deviceList.toString());
                     break;
                 case 2: // Add a new iPhone
                     deviceList.addDevice(iPhone.addDevice(scanner));
@@ -58,7 +58,7 @@ public class Main {
 
                     try {
                         FileWriter fileWriter = new FileWriter(new File(filename));
-                        fileWriter.write(deviceList.toString(true));
+                        fileWriter.write(deviceList.toStringText());
                         fileWriter.close();
                     } catch (IOException e) {
                         System.out.println("File not found.");
