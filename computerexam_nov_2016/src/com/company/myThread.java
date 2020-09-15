@@ -3,8 +3,8 @@ package com.company;
 import java.util.Comparator;
 
 public class myThread implements Runnable{
-    private Comparator<Device> comparator;
-    private DeviceList deviceList;
+    private final Comparator<Device> comparator;
+    private final DeviceList deviceList;
 
     public myThread(Comparator<Device> comparator, DeviceList deviceList) {
         this.comparator = comparator;

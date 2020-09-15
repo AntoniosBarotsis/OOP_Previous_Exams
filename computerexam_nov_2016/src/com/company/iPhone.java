@@ -1,13 +1,13 @@
 package com.company;
 
-import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Scanner;
 
 public class iPhone extends Device{
-    private enum ModemType { GSM, CMDA };
-    private ModemType modemType;
-    private boolean touch;
+    protected enum ModemType { GSM, CMDA }
+
+    private final ModemType modemType;
+    private final boolean touch;
 
     public iPhone(String modelName, Double screenSize, String processor, String color, int memory, int price, ModemType modemType, boolean touch) {
         super(modelName, screenSize, processor, color, memory, price);
@@ -18,7 +18,8 @@ public class iPhone extends Device{
 
     public static iPhone addDevice(Scanner scanner) {
         System.out.print("Please enter model name: ");
-        String modelName = scanner.next();
+        scanner.nextLine();
+        String modelName = scanner.nextLine();
 
         System.out.print(("Please enter screen size: "));
         Double screenSize = scanner.nextDouble();
@@ -45,7 +46,7 @@ public class iPhone extends Device{
         return new iPhone(modelName, screenSize, processor, color, memory, price, modemType, touch);
     }
 
-    public static Device readDevice(String[] lineSplit) {
+    public static iPhone readDevice(String[] lineSplit) {
         String modelName = lineSplit[0].replace("IPHONE ", "");
         Double screenSize = Double.parseDouble(lineSplit[1]);
         String processor = lineSplit[2];
@@ -56,12 +57,12 @@ public class iPhone extends Device{
         int price = Integer.parseInt(lineSplit[7]);
 
         return new iPhone(modelName, screenSize, processor, color, memory, price, modemType, touch);
-    };
+    }
 
     public String toString() {
         return "Apple iPhone " + modelName + " with " + memory + "GB of memory\n" +
-                "with an " + processor + " and " + screenSize.setScale(2, RoundingMode.CEILING) + " inch screen\n" +
-                price + " euros\n";
+                "with an " + processor + " processor and " + screenSize.setScale(1, RoundingMode.CEILING) + " inch screen\n" +
+                (int) (price) + " euros\n";
     }
 
     public String toStringText() {
