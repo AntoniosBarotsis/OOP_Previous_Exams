@@ -45,12 +45,18 @@ public class Main {
                     deviceList.addDevice(iPad.addDevice(scanner));
                     break;
                 case 4: // Show the entire Apple catalogue sorted by product
-                    myThread = new myThread(new productComparator(), deviceList);
-                    myThread.run();
+//                    myThread = new myThread(new productComparator(), deviceList);
+//                    myThread.run();
+                    new Thread(() -> deviceList.getDevices()
+                            .sort((x, y) -> CharSequence.compare(x.modelName, y.modelName)))
+                            .start();
                     break;
                 case 5: // Show the entire Apple catalogue sorted by price (low -> high)
-                    myThread = new myThread(new priceComparator(), deviceList);
-                    myThread.run();
+//                    myThread = new myThread(new priceComparator(), deviceList);
+//                    myThread.run();
+                    new Thread(() -> deviceList.getDevices()
+                            .sort((x, y) -> (int) (x.price - y.price)))
+                            .start();
                     break;
                 case 6: // Write to file
                     if (!isFileRead(filename))

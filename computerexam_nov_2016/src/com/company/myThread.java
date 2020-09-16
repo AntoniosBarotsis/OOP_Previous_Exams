@@ -13,5 +13,6 @@ public class myThread implements Runnable{
     @Override
     public void run() {
         deviceList.getDevices().sort(comparator);
+//        deviceList.getDevices().sort((x, y) -> (int) (x.price - y.price));
     }
 }
