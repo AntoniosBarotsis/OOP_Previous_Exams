@@ -42,8 +42,7 @@ public class DeviceList {
     public String toString() {
         StringBuilder str = new StringBuilder();
 
-        for (Device d : devices)
-            str.append(d.toString());
+        devices.forEach(d -> str.append(d.toString()));
 
         str.deleteCharAt(str.length() - 1);
 
@@ -53,8 +52,7 @@ public class DeviceList {
     public String toStringText() {
         StringBuilder str = new StringBuilder();
 
-        for (Device d : devices)
-            str.append(d.toStringText());
+        devices.forEach(d -> str.append(d.toStringText()));
 
         str.deleteCharAt(str.length() - 1);
 
