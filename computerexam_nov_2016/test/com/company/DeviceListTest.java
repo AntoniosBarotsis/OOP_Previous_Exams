@@ -55,6 +55,9 @@ public class DeviceListTest {
         assertEquals(iPhone1, deviceList.getDevices().get(4));
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> deviceList.readDevices(new Scanner("Bruh PRO, 9.7, A9, TRUE, SPACE GREY, 32GB, 650")));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            deviceList.readDevices(new Scanner("Bruh PRO, 9.7, A9, TRUE, SPACE GREY, 32GB, 650"));
+        });
     }
 
     @Test

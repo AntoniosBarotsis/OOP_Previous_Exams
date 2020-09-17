@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class iPhone extends Device{
     protected enum ModemType { GSM, CMDA }
-
     private final ModemType modemType;
     private final boolean touch;
 
