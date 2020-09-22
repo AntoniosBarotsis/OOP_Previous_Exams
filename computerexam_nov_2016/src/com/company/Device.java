@@ -11,6 +11,15 @@ public abstract class Device {
     protected final int memory;
     protected final float price;
 
+    /**
+     * Device constructor
+     * @param modelName
+     * @param screenSize
+     * @param processor
+     * @param color
+     * @param memory
+     * @param price
+     */
     public Device(String modelName, Double screenSize, String processor, String color, int memory, float price) {
         this.modelName = modelName;
         this.screenSize = new BigDecimal(screenSize, MathContext.DECIMAL64);
@@ -24,6 +33,11 @@ public abstract class Device {
 
     public abstract String toStringText();
 
+    /**
+     * Checks if this DeviceList is equal to another object
+     * @param other
+     * @return True iff other is a Device and has identical properties
+     */
     public boolean equals(Object other) {
         if (this == other) return true;
 

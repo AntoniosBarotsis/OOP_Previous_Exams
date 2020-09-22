@@ -6,12 +6,27 @@ import java.util.Scanner;
 public class iPad extends Device{
     private final boolean presenceOf4G;
 
+    /**
+     * iPad constructor
+     * @param modelName
+     * @param screenSize
+     * @param processor
+     * @param presenceOf4G
+     * @param color
+     * @param memory
+     * @param price
+     */
     public iPad(String modelName, Double screenSize, String processor, boolean presenceOf4G, String color, int memory, int price) {
         super(modelName, screenSize, processor, color, memory, price);
 
         this.presenceOf4G = presenceOf4G;
     }
 
+    /**
+     * Creates a new iPad from user input
+     * @param scanner
+     * @return iPad
+     */
     public static iPad addDevice(Scanner scanner) {
         System.out.print("Please enter model name: ");
         scanner.nextLine();
@@ -42,6 +57,11 @@ public class iPad extends Device{
         return new iPad(modelName, screenSize, processor, presenceOf4G, color, memory, price);
     }
 
+    /**
+     * Creats a new iPad from a text file
+     * @param lineSplit
+     * @return iPad
+     */
     public static iPad readDevice(String[] lineSplit) {
         String modelName = lineSplit[0].replace("IPAD ", "");
         Double screenSize = Double.parseDouble(lineSplit[1]);
@@ -54,6 +74,10 @@ public class iPad extends Device{
         return new iPad(modelName, screenSize, processor, presenceOf4G, color, memory, price);
     }
 
+    /**
+     * toString implementation intended for terminal use
+     * @return User friendly textual representation of the iPad
+     */
     public String toString() {
         return "Apple iPad " + modelName + " with " + memory + "GB of memory\n" +
                 "with an " + processor + " processor and " + screenSize.setScale(1, RoundingMode.CEILING) + " inch screen\n" +
@@ -61,6 +85,10 @@ public class iPad extends Device{
                 (int) (price) + " euros\n";
     }
 
+    /**
+     * toString implementation intended for text file use
+     * @return The textual representation of the iPad in the text file format
+     */
     public String toStringText() {
         return "IPAD " + modelName + ", " +
                 screenSize.setScale(1, RoundingMode.CEILING).stripTrailingZeros() + ", " +
@@ -71,12 +99,17 @@ public class iPad extends Device{
                 (int) price + "\n";
     }
 
-    public boolean equals(Object o) {
-        if (this == o) return true;
+    /**
+     * Checks if this DeviceList is equal to another object
+     * @param other
+     * @return True iff other is an iPad and has identical properties
+     */
+    public boolean equals(Object other) {
+        if (this == other) return true;
 
-        if (!(o instanceof iPad)) return false;
+        if (!(other instanceof iPad)) return false;
 
-        iPad that = (iPad) o;
+        iPad that = (iPad) other;
         return super.equals(that) &&
                 this.presenceOf4G == that.presenceOf4G;
     }

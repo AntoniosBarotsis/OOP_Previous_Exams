@@ -32,7 +32,6 @@ public class Main {
         while (input != 7) {
             System.out.println(msg);
             input = scanner.nextInt();
-            myThread myThread;
 
             switch (input) {
                 case 1:
@@ -63,9 +62,8 @@ public class Main {
                         filename = readFile(scanner);
 
                     try {
-                        FileWriter fileWriter = new FileWriter(new File(filename));
-                        fileWriter.write(deviceList.toStringText());
-                        fileWriter.close();
+                        new FileWriter((new File(filename)))
+                                .write(deviceList.toStringText());
                     } catch (IOException e) {
                         System.out.println("File not found.");
                         filename = "";
@@ -81,10 +79,20 @@ public class Main {
         }
     }
 
+    /**
+     * Checks if the file name is empty (because of how the code above works this would mean that the file was not found
+     * @param fileName
+     * @return True if the fileName is not empty
+     */
     public static boolean isFileRead(String fileName) {
         return !fileName.equals("");
     }
 
+    /**
+     * Reads the fileName from the user and adds the file extension if needed
+     * @param scanner
+     * @return fileName
+     */
     public static String readFile(Scanner scanner) {
         System.out.print("Please enter the file name: ");
         String filename = scanner.next();
